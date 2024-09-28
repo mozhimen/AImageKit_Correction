@@ -7,15 +7,20 @@ import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVB
-import com.mozhimen.basick.elemk.commons.I_Listener
-import com.mozhimen.basick.utilk.android.content.UtilKIntentWrapper
-import com.mozhimen.basick.utilk.android.content.isIntentAvailable
-import com.mozhimen.basick.utilk.android.graphics.bitmapAny2file
-import com.mozhimen.basick.utilk.android.widget.showToast
+import com.mozhimen.kotlin.elemk.commons.I_Listener
+import com.mozhimen.kotlin.utilk.android.content.UtilKIntentWrapper
+import com.mozhimen.kotlin.utilk.android.content.isIntentAvailable
+import com.mozhimen.kotlin.utilk.android.graphics.bitmapAny2file
+import com.mozhimen.kotlin.utilk.android.widget.showToast
 import com.mozhimen.imagek.correction.test.databinding.ActivityCropBinding
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_CAMERA
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_MANAGE_EXTERNAL_STORAGE
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_QUERY_ALL_PACKAGES
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_READ_EXTERNAL_STORAGE
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_WRITE_EXTERNAL_STORAGE
 import com.mozhimen.manifestk.xxpermissions.XXPermissionsCheckUtil
 import com.mozhimen.manifestk.xxpermissions.XXPermissionsRequestUtil
+import com.mozhimen.mvvmk.bases.activity.viewbinding.BaseActivityVB
 import java.io.File
 import java.io.FileNotFoundException
 
@@ -46,6 +51,7 @@ class CropActivity : BaseActivityVB<ActivityCropBinding>() {
         }, onDenied = {})
     }
 
+    @OptIn(OPermission_CAMERA::class)
     @SuppressLint("MissingPermission")
     private fun requestCameraPermission(onGranted: I_Listener, onDenied: I_Listener) {
         if (XXPermissionsCheckUtil.hasCameraPermission(this)) {
@@ -59,6 +65,7 @@ class CropActivity : BaseActivityVB<ActivityCropBinding>() {
         }
     }
 
+    @OptIn(OPermission_READ_EXTERNAL_STORAGE::class, OPermission_WRITE_EXTERNAL_STORAGE::class, OPermission_MANAGE_EXTERNAL_STORAGE::class)
     @SuppressLint("MissingPermission")
     private fun requestReadWritePermission(onGranted: I_Listener, onDenied: I_Listener) {
         if (XXPermissionsCheckUtil.hasReadWritePermission(this)) {
@@ -101,6 +108,7 @@ class CropActivity : BaseActivityVB<ActivityCropBinding>() {
         selectPhoto()
     }
 
+    @OptIn(OPermission_QUERY_ALL_PACKAGES::class)
     private fun selectPhoto() {
         if (_isFromAlbum) {
             val intent = UtilKIntentWrapper.getPickImage()
@@ -108,7 +116,7 @@ class CropActivity : BaseActivityVB<ActivityCropBinding>() {
                 startActivityForResult(intent, REQUEST_CODE_SELECT_ALBUM)
             }
         } else {
-            val intent = UtilKIntentWrapper.getImageCaptureOutput(_fileImageTemp)
+            val intent = UtilKIntentWrapper.getMediaStoreImageCaptureOutput(_fileImageTemp)
             if (intent?.isIntentAvailable(this) == true) {
                 startActivityForResult(intent, REQUEST_CODE_TAKE_PHOTO)
             }

@@ -23,7 +23,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import com.mozhimen.basick.utilk.kotlin.math.UtilKMathPoint;
+import com.mozhimen.kotlin.utilk.kotlin.math.UtilKMathPoint;
 import com.mozhimen.imagek.correction.R;
 import com.mozhimen.imagek.correction.ImageKCorrection;
 
@@ -506,7 +506,7 @@ public class ImageKSmartCrop extends androidx.appcompat.widget.AppCompatImageVie
             float cx = radius;
             int lineOffset = (int) dp2px(MAGNIFIER_BORDER_WIDTH);
             mMagnifierDrawable.setBounds(lineOffset, lineOffset, (int)radius * 2 - lineOffset, (int)radius * 2 - lineOffset);
-            double pointsDistance = UtilKMathPoint.distance2(draggingX, draggingY, 0, 0);
+            double pointsDistance = UtilKMathPoint.distance(draggingX, draggingY, 0, 0);
             if (pointsDistance < (radius * 2.5)) {
                 mMagnifierDrawable.setBounds(getWidth() - (int)radius * 2 + lineOffset, lineOffset, getWidth() - lineOffset, (int)radius * 2 - lineOffset);
                 cx = getWidth() - radius;

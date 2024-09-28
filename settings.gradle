@@ -23,20 +23,26 @@ include ':app'
 include ':imagek_correction'
 //SwiftKit
 include ':SwiftKit'
-project(':SwiftKit').projectDir = new File("C:\\Users\\${System.getenv().get("USERNAME")}\\Documents\\GitHub\\SwiftKit")
+project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
 include ':SwiftKit:basick'
-include ':SwiftKit:uicorek'
+include ':SwiftKit:xmlk'
+include ':SwiftKit:mvvmk'
 //AScanKit_TFLite
 include ':AScanKit_TFLite'
 project(':AScanKit_TFLite').projectDir = new File("D:\\WorkSpace\\GitHub\\AScanKit_TFLite")
-include ':AScanKit_TFLite:edge_detection'
-//TFLiteLoader
-include ':TFLiteLoader'
-project(':TFLiteLoader').projectDir = new File("D:\\WorkSpace\\GitHub\\TFLiteLoader")
-include ':TFLiteLoader:tfloader'
+include ':AScanKit_TFLite:tflite_normalize'
+//ATFLiteLoader
+include ':ATFLiteLoader'
+project(':ATFLiteLoader').projectDir = new File("D:\\WorkSpace\\GitHub\\ATFLiteLoader")
+include ':ATFLiteLoader:tfloader'
 //AManifestKit_XXPermissions
 include ':AManifestKit_XXPermissions'
 project(':AManifestKit_XXPermissions').projectDir = new File("D:\\WorkSpace\\GitHub\\AManifestKit_XXPermissions")
 include ':AManifestKit_XXPermissions:manifestk_xxpermissions'
 include ':AManifestKit_XXPermissions:library'
+//KUtilKit
+include ':KUtilKit'
+project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
+include ':KUtilKit:utilk_android'
+include ':KUtilKit:utilk_kotlin'
 

@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.mozhimen.imagek.correction'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
@@ -43,9 +43,8 @@ android {
 }
 
 dependencies {
-
-    implementation project(':SwiftKit:basick')
-    implementation project(':AScanKit_TFLite:edge_detection')
+    implementation project(':KUtilKit:utilk_android')
+    implementation project(':AScanKit_TFLite:tflite_normalize')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

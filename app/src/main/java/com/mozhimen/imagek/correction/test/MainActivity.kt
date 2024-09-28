@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVB
 import com.mozhimen.imagek.correction.test.databinding.ActivityMainBinding
+import com.mozhimen.mvvmk.bases.activity.viewbinding.BaseActivityVB
 import java.io.File
 
 class MainActivity : BaseActivityVB<ActivityMainBinding>() {

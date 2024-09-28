@@ -1,7 +1,6 @@
 package com.mozhimen.imagek.correction.test
 
-import com.mozhimen.basick.elemk.android.app.bases.BaseApplication
-import com.mozhimen.basick.lintk.optins.OApiMultiDex_InApplication
+import android.app.Application
 import com.mozhimen.imagek.correction.ImageKCorrection
 
 /**
@@ -11,8 +10,7 @@ import com.mozhimen.imagek.correction.ImageKCorrection
  * @Date 2024/2/12 18:11
  * @Version 1.0
  */
-@OptIn(OApiMultiDex_InApplication::class)
-class MainApplication:BaseApplication() {
+class MainApplication:Application() {
     override fun onCreate() {
         super.onCreate()
         ImageKCorrection.initTfLiteEdgeDetector(this)

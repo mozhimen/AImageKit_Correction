@@ -6,15 +6,15 @@ import android.graphics.Point;
 
 import androidx.annotation.OptIn;
 
-import com.mozhimen.basick.lintk.optins.OApiInit_ByLazy;
-import com.mozhimen.basick.utilk.android.graphics.UtilKPoint;
-import com.mozhimen.scank.tflite.edge.TFLiteEdgeDetection;
+import com.mozhimen.kotlin.lintk.optins.OApiInit_ByLazy;
+import com.mozhimen.kotlin.utilk.android.graphics.UtilKPoint;
+import com.mozhimen.scank.tflite.normalize.TFLiteNormalizeDetector;
 
 import java.io.IOException;
 
 public class ImageKCorrection {
 
-    private static TFLiteEdgeDetection _tfLiteEdgeDetection = null;
+    private static TFLiteNormalizeDetector _tfLiteEdgeDetection = null;
 
     ///////////////////////////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ public class ImageKCorrection {
     @OptIn(markerClass = OApiInit_ByLazy.class)
     public static void initTfLiteEdgeDetector(Context context, String modelFile) {
         try {
-            _tfLiteEdgeDetection = new TFLiteEdgeDetection(context, modelFile);
+            _tfLiteEdgeDetection = new TFLiteNormalizeDetector(context, modelFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,7 +43,7 @@ public class ImageKCorrection {
             throw new IllegalArgumentException("srcBmp cannot be null");
         }
         if (_tfLiteEdgeDetection != null) {
-            Bitmap bitmap = _tfLiteEdgeDetection.edgeDetect(srcBmp);
+            Bitmap bitmap = _tfLiteEdgeDetection.normalize(srcBmp);
             if (bitmap != null) {
                 srcBmp = Bitmap.createScaledBitmap(bitmap, srcBmp.getWidth(), srcBmp.getHeight(), false);
             }
@@ -72,10 +72,10 @@ public class ImageKCorrection {
         Point rightBottom = cropPoints[2];
         Point leftBottom = cropPoints[3];
 
-        int cropWidth = (int) ((UtilKPoint.getDistanceForPoints(leftTop, rightTop)
-                + UtilKPoint.getDistanceForPoints(leftBottom, rightBottom)) / 2);
-        int cropHeight = (int) ((UtilKPoint.getDistanceForPoints(leftTop, leftBottom)
-                + UtilKPoint.getDistanceForPoints(rightTop, rightBottom)) / 2);
+        int cropWidth = (int) ((UtilKPoint.getDistance(leftTop, rightTop)
+                + UtilKPoint.getDistance(leftBottom, rightBottom)) / 2);
+        int cropHeight = (int) ((UtilKPoint.getDistance(leftTop, leftBottom)
+                + UtilKPoint.getDistance(rightTop, rightBottom)) / 2);
 
         Bitmap cropBitmap = Bitmap.createBitmap(cropWidth, cropHeight, Bitmap.Config.ARGB_8888);
         ImageKCorrection.nativeCrop(srcBmp, cropPoints, cropBitmap);

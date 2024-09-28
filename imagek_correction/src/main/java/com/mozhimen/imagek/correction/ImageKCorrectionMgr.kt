@@ -1,7 +1,7 @@
 package com.mozhimen.imagek.correction
 
 import android.content.Context
-import com.mozhimen.basick.lintk.optins.OApiInit_InApplication
+import com.mozhimen.kotlin.lintk.optins.OApiInit_InApplication
 
 /**
  * @ClassName ImageKCorrectionMgr
