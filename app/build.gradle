@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation project(':SwiftKit:mvvmk')
+    implementation project(':SwiftKit:bindk')
     implementation project(':imagek_correction')
     implementation project(':AManifestKit_XXPermissions:manifestk_xxpermissions')
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

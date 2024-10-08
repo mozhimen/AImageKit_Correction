@@ -26,7 +26,7 @@ include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
 include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
-include ':SwiftKit:mvvmk'
+include ':SwiftKit:bindk'
 //AScanKit_TFLite
 include ':AScanKit_TFLite'
 project(':AScanKit_TFLite').projectDir = new File("D:\\WorkSpace\\GitHub\\AScanKit_TFLite")

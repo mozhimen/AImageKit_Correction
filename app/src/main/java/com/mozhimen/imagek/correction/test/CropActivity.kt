@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
+import com.mozhimen.bindk.bases.viewbinding.activity.BaseActivityVB
 import com.mozhimen.kotlin.elemk.commons.I_Listener
 import com.mozhimen.kotlin.utilk.android.content.UtilKIntentWrapper
 import com.mozhimen.kotlin.utilk.android.content.isIntentAvailable
@@ -20,7 +21,6 @@ import com.mozhimen.kotlin.lintk.optins.permission.OPermission_READ_EXTERNAL_STO
 import com.mozhimen.kotlin.lintk.optins.permission.OPermission_WRITE_EXTERNAL_STORAGE
 import com.mozhimen.manifestk.xxpermissions.XXPermissionsCheckUtil
 import com.mozhimen.manifestk.xxpermissions.XXPermissionsRequestUtil
-import com.mozhimen.mvvmk.bases.activity.viewbinding.BaseActivityVB
 import java.io.File
 import java.io.FileNotFoundException
 
